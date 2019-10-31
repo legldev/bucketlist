@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #12312f;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(240, 199, 107, 0.22), transparent 34rem),
+    linear-gradient(135deg, #12312f 0%, #184f4b 48%, #7f4b35 100%);
+  color: #ffffff;
+  font-family: Inter, Arial, sans-serif;
+}
+
+button,
+input {
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+}

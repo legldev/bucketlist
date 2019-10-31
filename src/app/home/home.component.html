@@ -1,0 +1,46 @@
+<section class="bucket-page">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Bucket list</p>
+      <h1>Things worth making time for.</h1>
+    </div>
+
+    <div class="counter" aria-label="Bucket list item count">
+      <span>{{ itemCount }}</span>
+      <small>{{ itemCount === 1 ? 'item' : 'items' }}</small>
+    </div>
+  </div>
+
+  <div class="workspace">
+    <form class="add-panel" (ngSubmit)="addItem()">
+      <label for="goal">New goal</label>
+      <div class="input-row">
+        <input
+          id="goal"
+          type="text"
+          name="item"
+          placeholder="See the northern lights"
+          [(ngModel)]="goalText"
+          autocomplete="off"
+        />
+        <button type="submit">{{ btnText }}</button>
+      </div>
+    </form>
+
+    <section class="list-panel" aria-label="Your bucket list">
+      <div class="list-header">
+        <h2>Your list</h2>
+        <span>{{ itemCount }} total</span>
+      </div>
+
+      <p class="empty-state" *ngIf="itemCount === 0">Start with one thing you cannot stop thinking about.</p>
+
+      <ul class="goal-list" *ngIf="itemCount > 0">
+        <li *ngFor="let goal of goals; let i = index">
+          <span>{{ goal }}</span>
+          <button type="button" aria-label="Remove item" (click)="removeItem(i)">Done</button>
+        </li>
+      </ul>
+    </section>
+  </div>
+</section>
