@@ -28,4 +28,12 @@ describe('HomeComponent', () => {
 
     expect(component.goals[0]).toBe('Visit Japan');
   });
+
+  it('should switch the interface copy to Spanish', () => {
+    component.setLanguage('es');
+    fixture.detectChanges();
+
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Cosas por las que vale hacer tiempo.');
+  });
 });

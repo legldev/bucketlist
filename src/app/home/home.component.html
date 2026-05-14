@@ -1,44 +1,58 @@
 <section class="bucket-page">
+  <div class="language-switcher" aria-label="Language">
+    <button
+      type="button"
+      *ngFor="let option of languages"
+      [class.active]="language === option.code"
+      [attr.aria-pressed]="language === option.code"
+      (click)="setLanguage(option.code)"
+    >
+      {{ option.label }}
+    </button>
+  </div>
+
   <div class="hero">
     <div>
-      <p class="eyebrow">Bucket list</p>
-      <h1>Things worth making time for.</h1>
+      <p class="eyebrow">{{ text.eyebrow }}</p>
+      <h1>{{ text.headline }}</h1>
     </div>
 
-    <div class="counter" aria-label="Bucket list item count">
+    <div class="counter" [attr.aria-label]="text.counterAria">
       <span>{{ itemCount }}</span>
-      <small>{{ itemCount === 1 ? 'item' : 'items' }}</small>
+      <small>{{ itemCount === 1 ? text.itemLabel : text.itemsLabel }}</small>
     </div>
   </div>
 
   <div class="workspace">
     <form class="add-panel" (ngSubmit)="addItem()">
-      <label for="goal">New goal</label>
+      <label for="goal">{{ text.newGoalLabel }}</label>
       <div class="input-row">
         <input
           id="goal"
           type="text"
           name="item"
-          placeholder="See the northern lights"
+          [placeholder]="text.placeholder"
           [(ngModel)]="goalText"
           autocomplete="off"
         />
-        <button type="submit">{{ btnText }}</button>
+        <button type="submit">{{ text.addButton }}</button>
       </div>
     </form>
 
-    <section class="list-panel" aria-label="Your bucket list">
+    <section class="list-panel" [attr.aria-label]="text.listAria">
       <div class="list-header">
-        <h2>Your list</h2>
-        <span>{{ itemCount }} total</span>
+        <h2>{{ text.listTitle }}</h2>
+        <span>{{ itemCount }} {{ text.totalLabel }}</span>
       </div>
 
-      <p class="empty-state" *ngIf="itemCount === 0">Start with one thing you cannot stop thinking about.</p>
+      <p class="empty-state" *ngIf="itemCount === 0">{{ text.emptyState }}</p>
 
       <ul class="goal-list" *ngIf="itemCount > 0">
         <li *ngFor="let goal of goals; let i = index">
           <span>{{ goal }}</span>
-          <button type="button" aria-label="Remove item" (click)="removeItem(i)">Done</button>
+          <button type="button" [attr.aria-label]="text.removeAria" (click)="removeItem(i)">
+            {{ text.doneButton }}
+          </button>
         </li>
       </ul>
     </section>

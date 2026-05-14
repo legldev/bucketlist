@@ -4,6 +4,26 @@
   padding: 48px 0 28px;
 }
 
+.language-switcher {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.language-switcher button {
+  min-width: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 10px 12px;
+}
+
+.language-switcher button.active {
+  background: #ffffff;
+  color: #12312f;
+}
+
 .hero {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -104,9 +124,9 @@ input:focus {
   box-shadow: 0 0 0 4px rgba(27, 127, 122, 0.15);
 }
 
-button {
-  border: 0;
-  border-radius: 8px;
+  button {
+    border: 0;
+    border-radius: 8px;
   background: #1b7f7a;
   color: #ffffff;
   cursor: pointer;
@@ -210,5 +230,9 @@ h2 {
 
   .goal-list li {
     grid-template-columns: 1fr;
+  }
+
+  .language-switcher {
+    justify-content: flex-start;
   }
 }
